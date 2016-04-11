@@ -34,40 +34,40 @@ preferences {
   			metadata: [
 				values: ['Yes','No']
 			]
-    	input 'shmBypass', 'enum', title: 'SHM Stay/Away Bypass', required: false,
-      		metadata: [
-       			values: ['Yes','No']
-      		]
+		input 'shmBypass', 'enum', title: 'SHM Stay/Away Bypass', required: false,
+			metadata: [
+				values: ['Yes','No']
+			]
   	}
   	section('XBMC Notifications (optional):') {
-    	// TODO: put inputs here
-    	input 'xbmcserver', 'text', title: 'XBMC IP', description: 'IP Address', required: false
-    	input 'xbmcport', 'number', title: 'XBMC Port', description: 'Port', required: false
+		// TODO: put inputs here
+		input 'xbmcserver', 'text', title: 'XBMC IP', description: 'IP Address', required: false
+		input 'xbmcport', 'number', title: 'XBMC Port', description: 'Port', required: false
   	}
   	section('Notifications (optional)') {
-    	input 'sendPush', 'enum', title: 'Push Notification', required: false,
-      		metadata: [
-       			values: ['Yes','No']
-      		]
-        input 'phone1', 'phone', title: 'Phone Number', required: false
+		input 'sendPush', 'enum', title: 'Push Notification', required: false,
+			metadata: [
+				values: ['Yes','No']
+			]
+		input 'phone1', 'phone', title: 'Phone Number', required: false
   	}
   	section('Notification events (optional):') {
-    	input 'notifyEvents', 'enum', title: 'Which Events', description: 'Events to notify on', required: false, multiple: true,
-      		options: [
-        		'all', 'partition alarm', 'partition armed', 'partition away', 'partition disarm', 'partition duress',
-        		'partition entrydelay', 'partition exitdelay', 'partition forceready', 'partition instantaway',
-        		'partition instantstay', 'partition notready', 'partition ready', 'partition restore', 'partition stay',
-        		'partition trouble', 'partition keyfirealarm', 'partition keyfirerestore', 'partition keyauxalarm',
-        		'partition keyauxrestore', 'partition keypanicalarm', 'partition keypanicrestore', 'led backlight on',
-        		'led backlight off', 'led fire on', 'led fire off', 'led program on', 'led program off', 'led trouble on',
-        		'led trouble off', 'led bypass on', 'led bypass off', 'led memory on', 'led memory off', 'led armed on',
-        		'led armed off', 'led ready on', 'led ready off', 'zone alarm', 'zone clear', 'zone closed', 'zone fault',
-        		'zone open', 'zone restore', 'zone smoke', 'zone tamper'
-      		]
+		input 'notifyEvents', 'enum', title: 'Which Events', description: 'Events to notify on', required: false, multiple: true,
+			options: [
+				'all', 'partition alarm', 'partition armed', 'partition away', 'partition disarm', 'partition duress',
+				'partition entrydelay', 'partition exitdelay', 'partition forceready', 'partition instantaway',
+				'partition instantstay', 'partition notready', 'partition ready', 'partition restore', 'partition stay',
+				'partition trouble', 'partition keyfirealarm', 'partition keyfirerestore', 'partition keyauxalarm',
+				'partition keyauxrestore', 'partition keypanicalarm', 'partition keypanicrestore', 'led backlight on',
+				'led backlight off', 'led fire on', 'led fire off', 'led program on', 'led program off', 'led trouble on',
+				'led trouble off', 'led bypass on', 'led bypass off', 'led memory on', 'led memory off', 'led armed on',
+				'led armed off', 'led ready on', 'led ready off', 'zone alarm', 'zone clear', 'zone closed', 'zone fault',
+				'zone open', 'zone restore', 'zone smoke', 'zone tamper'
+			]
 		input 'includePartition', 'enum', title: 'Include Partition # in Notification', required: false,
 			metadata: [
 				values: ['Yes','No']
-      		]
+			]
   	}
 }
 
