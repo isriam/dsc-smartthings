@@ -6,10 +6,10 @@
  *  Modified by: Jordan <jordan@xeron.cc>
  *  Modified by: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
  *		Changes:	Added Flood Sensor Type (define a flood sensor (DSC WS4985) in alarmserver.cfg as 'flood'
- *					Fixed line identation
- *					Customized alarm push messages to be more understandable for end users
- *					Added a setting to show/not show partition number in notification messages
- *					Fixed "notification" spelling error on line 46
+ *				Fixed line identation
+ *				Customized alarm push messages to be more understandable for end users
+ *				Added a setting to show/not show partition number in notification messages
+ *				Fixed "notification" spelling error on line 46
  */
 
 definition(
