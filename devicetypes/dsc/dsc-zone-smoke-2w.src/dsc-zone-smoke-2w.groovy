@@ -5,11 +5,12 @@
  *  Smoke Alarm Additions Author: Dan S <coke12oz@hotmail.com>
  *  Modified by Jordan <jordan@xeron.cc>
  *  Date: 2016-02-04
+ *  Cosmetically Tweaked By: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
  */
 
 // for the UI
 metadata {
-  definition (name: "DSC Zone Smoke 2w", author: "jordan@xeron.cc", namespace: 'dsc') {
+  definition (name: "DSC Zone Smoke 2w", author: "jordan@xeron.cc", namespace: 'DSC') {
     // Change or define capabilities here as needed
     capability "Smoke Detector"
     capability "Sensor"
@@ -22,10 +23,12 @@ metadata {
 
   tiles {
     // Main Row
-    standardTile("zone", "device.smoke", width: 2, height: 2, canChangeBackground: true, canChangeIcon: true) {
-      state "clear",  label: 'clear',  icon: "st.alarm.smoke.clear", backgroundColor: "#ffffff"
-      state "smoke",  label: 'SMOKE',  icon: "st.alarm.smoke.smoke", backgroundColor: "#e86d13"
-      state "tested", label: 'TESTED', icon: "st.alarm.smoke.test",  backgroundColor: "#e86d13"
+    multiAttributeTile(name:"zone", type: "generic", width: 6, height: 4){
+        tileAttribute ("device.smoke", key: "PRIMARY_CONTROL") {
+            attributeState "clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#ffffff"
+            attributeState "smoke", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13"
+            attributeState "tested", label:'Tested', icon:"st.alarm.smoke.test", backgroundColor:"#e86d13"
+        }
     }
 
     // This tile will be the tile that is displayed on the Hub page.
