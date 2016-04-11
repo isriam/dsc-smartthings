@@ -10,46 +10,46 @@
 
 // for the UI
 metadata {
-  definition (name: "DSC Zone Smoke 4w", author: "jordan@xeron.cc", namespace: 'DSC') {
+	definition (name: "DSC Zone Smoke 4w", author: "jordan@xeron.cc", namespace: 'DSC') {
 		// Change or define capabilities here as needed
-    capability "Smoke Detector"
-    capability "Sensor"
-    capability "Momentary"
+		capability "Smoke Detector"
+		capability "Sensor"
+		capability "Momentary"
 
-    // Add commands as needed
-    command "zone"
-    command "bypass"
-  }
+		// Add commands as needed
+		command "zone"
+		command "bypass"
+	}
 
-  simulator {
-    // Nothing here, you could put some testing stuff here if you like
-  }
+	simulator {
+		// Nothing here, you could put some testing stuff here if you like
+	}
 
-  tiles(scale: 2) {
-  	multiAttributeTile(name:"zone", type: "generic", width: 6, height: 4){
-        tileAttribute ("device.smoke", key: "PRIMARY_CONTROL") {
-            attributeState "clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#ffffff"
-            attributeState "detected", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13"
-            attributeState "tested", label:'Tested', icon:"st.alarm.smoke.test", backgroundColor:"#e86d13"
-        }
-    }
-    standardTile ("trouble", "device.trouble", width: 2, height: 2, title: "Trouble") {
-      state "restore", label: 'No Trouble', icon: "st.security.alarm.clear"
-      state "tamper", label: 'Tamper', icon: "st.security.alarm.alarm", backgroundColor: "#ffa81e"
-      state "fault", label: 'Fault', icon: "st.security.alarm.alarm", backgroundColor: "#ff1e1e"
-    }
-    standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass"){
-      state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked", backgroundColor: "#FFFF00"
-    }
+	tiles(scale: 2) {
+		multiAttributeTile(name:"zone", type: "generic", width: 6, height: 4){
+			tileAttribute ("device.smoke", key: "PRIMARY_CONTROL") {
+				attributeState "clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#ffffff"
+				attributeState "detected", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13"
+				attributeState "tested", label:'Tested', icon:"st.alarm.smoke.test", backgroundColor:"#e86d13"
+			}
+		}
+		standardTile ("trouble", "device.trouble", width: 2, height: 2, title: "Trouble") {
+			state "restore", label: 'No Trouble', icon: "st.security.alarm.clear"
+			state "tamper", label: 'Tamper', icon: "st.security.alarm.alarm", backgroundColor: "#ffa81e"
+			state "fault", label: 'Fault', icon: "st.security.alarm.alarm", backgroundColor: "#ff1e1e"
+		}
+		standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass"){
+			state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked", backgroundColor: "#FFFF00"
+		}
 		standardTile("spacerTile", "spacerTile", decoration: "flat", width: 1, height: 2) {
 		}
     
-    // This tile will be the tile that is displayed on the Hub page.
-    main "zone"
+		// This tile will be the tile that is displayed on the Hub page.
+		main "zone"
 
-    // These tiles will be displayed when clicked on the device, in the order listed here.
-    details(["zone", "spacerTile","trouble", "bypass", "spacerTile"])
-  }
+		// These tiles will be displayed when clicked on the device, in the order listed here.
+		details(["zone", "spacerTile","trouble", "bypass", "spacerTile"])
+	}
 }
 
 // handle commands
