@@ -53,8 +53,8 @@ metadata {
 			}
 		}
         
-        // This title is just a hidden title for use in the "Things" lists
-        standardTile ("statusHidden", "device.status", width: 4, height: 4, title: "Status") {
+        	// This title is just a hidden title for use in the "Things" lists
+        	standardTile ("statusHidden", "device.status", width: 4, height: 4, title: "Status") {
 			state "alarm", label:'Alarming', action: 'disarm', icon:"st.security.alarm.alarm", backgroundColor:"#ff0000"
 			state "away", label:'Armed Away', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#6666FF"
 			state "disarm", label:'Disarm', icon:"st.security.alarm.off", backgroundColor:"#79b821"
