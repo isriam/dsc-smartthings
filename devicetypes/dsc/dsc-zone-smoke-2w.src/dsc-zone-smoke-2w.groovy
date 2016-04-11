@@ -24,11 +24,11 @@ metadata {
   tiles {
     // Main Row
     multiAttributeTile(name:"zone", type: "generic", width: 6, height: 4){
-        tileAttribute ("device.smoke", key: "PRIMARY_CONTROL") {
-            attributeState "clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#ffffff"
-            attributeState "smoke", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13"
-            attributeState "tested", label:'Tested', icon:"st.alarm.smoke.test", backgroundColor:"#e86d13"
-        }
+      tileAttribute ("device.smoke", key: "PRIMARY_CONTROL") {
+        attributeState "clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#ffffff"
+        attributeState "smoke", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13"
+        attributeState "tested", label:'Tested', icon:"st.alarm.smoke.test", backgroundColor:"#e86d13"
+      }
     }
 
     // This tile will be the tile that is displayed on the Hub page.
