@@ -5,11 +5,12 @@
  *  Original Author: Matt Martz <matt.martz@gmail.com>
  *  Modified to be a motion device: Kent Holloway <drizit@gmail.com>
  *  Date: 2016-02-27
+ *  Cosmetically Tweaked By: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
  */
 
 // for the UI
 metadata {
-  definition (name: "DSC Zone Motion", author: "jordan@xeron.cc", namespace: 'dsc') {
+  definition (name: "DSC Zone Motion", author: "jordan@xeron.cc", namespace: 'DSC') {
     // Change or define capabilities here as needed
     capability "Motion Sensor"
     capability "Sensor"
@@ -25,25 +26,30 @@ metadata {
   }
 
   tiles(scale: 2) {
-    standardTile ("zone", "device.motion", width: 4, height: 4, title: "Zone") {
-      state "active",   label:'motion',    icon:"st.motion.motion.active",   backgroundColor:"#53a7c0"
-      state "inactive", label:'no motion', icon:"st.motion.motion.inactive", backgroundColor:"#ffffff"
-      state "alarm",    label:'ALARM',     icon:"st.motion.motion.active",   backgroundColor:"#ff0000"
+  	multiAttributeTile(name:"zone", type: "generic", width: 6, height: 4){
+        tileAttribute ("device.motion", key: "PRIMARY_CONTROL") {
+            attributeState "active", label:'Motion', icon:"st.motion.motion.active", backgroundColor:"#53a7c0"
+            attributeState "inactive", label:'No Motion', icon:"st.motion.motion.inactive", backgroundColor:"#ffffff"
+            attributeState "alarm", label:'Alarm', icon:"st.motion.motion.active", backgroundColor:"#ff0000"
+        }
     }
     standardTile ("trouble", "device.trouble", width: 2, height: 2, title: "Trouble") {
-      state "restore", label: 'No\u00A0Trouble', icon: "st.security.alarm.clear", backgroundColor: "#79b821"
+      state "restore", label: 'No Trouble', icon: "st.security.alarm.clear"
       state "tamper", label: 'Tamper', icon: "st.security.alarm.alarm", backgroundColor: "#ffa81e"
       state "fault", label: 'Fault', icon: "st.security.alarm.alarm", backgroundColor: "#ff1e1e"
     }
-    standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass"){
-      state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked", backgroundColor: "#FFFF00"
+    standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass", decoration: "flat"){
+      state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked"
     }
 
+	standardTile("spacerTile", "spacerTile", decoration: "flat", width: 1, height: 2) {
+	}
+    
     // This tile will be the tile that is displayed on the Hub page.
     main "zone"
 
     // These tiles will be displayed when clicked on the device, in the order listed here.
-    details(["zone", "trouble", "bypass"])
+    details(["zone", "spacerTile", "trouble", "bypass", "spacerTile"])
   }
 }
 
