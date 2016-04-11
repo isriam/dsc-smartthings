@@ -11,7 +11,7 @@
 // for the UI
 metadata {
   definition (name: "DSC Zone Smoke 4w", author: "jordan@xeron.cc", namespace: 'DSC') {
-    // Change or define capabilities here as needed
+		// Change or define capabilities here as needed
     capability "Smoke Detector"
     capability "Sensor"
     capability "Momentary"
@@ -41,8 +41,8 @@ metadata {
     standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass"){
       state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked", backgroundColor: "#FFFF00"
     }
-	standardTile("spacerTile", "spacerTile", decoration: "flat", width: 1, height: 2) {
-	}
+		standardTile("spacerTile", "spacerTile", decoration: "flat", width: 1, height: 2) {
+		}
     
     // This tile will be the tile that is displayed on the Hub page.
     main "zone"
@@ -72,7 +72,8 @@ def zone(String state) {
   if (troubleList.contains(state)) {
     // Send final event
     sendEvent (name: "trouble", value: "${state}")
-  } else {
+  } 
+  else {
     // Since this is a smoke device we need to convert the values to match the device capabilities
     // before sending the event
     def eventMap = [
