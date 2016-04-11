@@ -9,26 +9,26 @@
  // for the UI
 
 metadata {
-    // Automatically generated. Make future change here.
-    definition (name: "DSC Stay Panel", author: "Jordan <jordan@xeron.cc>", namespace: 'DSC') {
-        capability "Switch"
-        capability "Refresh"
+	// Automatically generated. Make future change here.
+	definition (name: "DSC Stay Panel", author: "Jordan <jordan@xeron.cc>", namespace: 'DSC') {
+		capability "Switch"
+		capability "Refresh"
 
-        command "away"
-        command "bypassoff"
-        command "disarm"
-        command "instant"
-        command "night"
-        command "nokey"
-        command "partition"
-        command "key"
-        command "keyfire"
-        command "keyaux"
-        command "keypanic"
-        command "reset"
-        command "stay"
-        command "togglechime"
-    }
+		command "away"
+		command "bypassoff"
+		command "disarm"
+		command "instant"
+		command "night"
+		command "nokey"
+		command "partition"
+		command "key"
+		command "keyfire"
+		command "keyaux"
+		command "keypanic"
+		command "reset"
+		command "stay"
+		command "togglechime"
+	}
 
 	// simulator metadata
 	simulator {
