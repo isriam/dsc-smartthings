@@ -1,18 +1,16 @@
 /*
  *  DSC Zone Motion Device
  *
- *  Author: Jordan <jordan@xeron.cc>
- *  Original Author: Matt Martz <matt.martz@gmail.com>
- *  Modified to be a motion device: Kent Holloway <drizit@gmail.com>
- *  Date: 2016-02-27
- *  Cosmetically Tweaked By: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
+ *  Author: Mike Maat <mmaat@ualberta.ca>
+ *  Adapted From Original DSC Device Type Authors: Jordan <jordan@xeron.cc>, Matt Martz <matt.martz@gmail.com>
+ *  Date: 2016-04-08
  */
 
 // for the UI
 metadata {
-	definition (name: "DSC Zone Motion", author: "jordan@xeron.cc", namespace: 'DSC') {
+	definition (name: "DSC Zone Flood", author: "jordan@xeron.cc/mmaat@ualberta.ca", namespace: 'DSC') {
 		// Change or define capabilities here as needed
-		capability "Motion Sensor"
+		capability "Water Sensor"
 		capability "Sensor"
 		capability "Momentary"
 
@@ -28,11 +26,11 @@ metadata {
 	tiles(scale: 2) {
 		multiAttributeTile(name:"zone", type: "generic", width: 6, height: 4){
 			tileAttribute ("device.motion", key: "PRIMARY_CONTROL") {
-				attributeState "active", label:'Motion', icon:"st.motion.motion.active", backgroundColor:"#53a7c0"
-				attributeState "inactive", label:'No Motion', icon:"st.motion.motion.inactive", backgroundColor:"#ffffff"
-				attributeState "alarm", label:'Alarm', icon:"st.motion.motion.active", backgroundColor:"#ff0000"
+				attributeState "open", label:'Dry', icon:"st.alarm.water.dry", backgroundColor:"#ffffff"
+				attributeState "closed", label:'Flood', icon:"st.alarm.water.wet", backgroundColor:"#ff0000"
+				attributeState "alarm", label:'Flood', icon:"st.alarm.water.wet", backgroundColor:"#ff0000"
 			}
-		}
+    		}
 		standardTile ("trouble", "device.trouble", width: 2, height: 2, title: "Trouble") {
 			state "restore", label: 'No Trouble', icon: "st.security.alarm.clear"
 			state "tamper", label: 'Tamper', icon: "st.security.alarm.alarm", backgroundColor: "#ffa81e"
@@ -41,7 +39,6 @@ metadata {
 		standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass", decoration: "flat"){
 			state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked"
 		}
-
 		standardTile("spacerTile", "spacerTile", decoration: "flat", width: 1, height: 2) {
 		}
     
@@ -78,12 +75,12 @@ def zone(String state) {
 		// Since this is a motion sensor device we need to convert open to active and closed to inactive
 		// before sending the event
 		def eventMap = [
-			'open':"active",
-			'closed':"inactive",
-			'alarm':"alarm"
+			'open':"dry",
+			'closed':"wet",
+			'alarm':"wet"
 		]
 		def newState = eventMap."${state}"
 		// Send final event
-		sendEvent (name: "motion", value: "${newState}")
+		sendEvent (name: "water", value: "${newState}")
 	}
 }
