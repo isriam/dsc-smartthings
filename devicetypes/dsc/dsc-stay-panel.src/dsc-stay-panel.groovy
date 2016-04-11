@@ -53,7 +53,6 @@ metadata {
 				attributeState "instantstay", label:'Armed Stay', icon:"st.security.alarm.on", backgroundColor:"#00A0DC"
 			}
 		}
-        
         	// This title is just a hidden title for use in the "Things" lists
         	standardTile ("statusHidden", "device.status", width: 4, height: 4, title: "Status") {
 			state "alarm", label:'Alarming', action: 'disarm', icon:"st.security.alarm.alarm", backgroundColor:"#ff0000"
