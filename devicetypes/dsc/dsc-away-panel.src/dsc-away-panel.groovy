@@ -6,7 +6,7 @@
  *  Date: 2016-02-03
  *  Cosmetically Tweaked By: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
  */
- // for the UIW
+ // for the UI
 
 metadata {
 	// Automatically generated. Make future change here.
