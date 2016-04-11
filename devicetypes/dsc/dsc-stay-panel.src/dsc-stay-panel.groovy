@@ -30,11 +30,12 @@ metadata {
         command "togglechime"
     }
 
-    // simulator metadata
-    simulator {
-    }
+	// simulator metadata
+	simulator {
+    	
+	}
 
-// UI tile definitions
+	// UI tile definitions
 	tiles(scale: 2) {
 		multiAttributeTile(name:"status", type: "general", width: 6, height: 4){
 			tileAttribute ("device.status", key: "PRIMARY_CONTROL") {
