@@ -56,17 +56,17 @@ metadata {
         // This title is just a hidden title for use in the "Things" lists
         standardTile ("statusHidden", "device.status", width: 4, height: 4, title: "Status") {
 			state "alarm", label:'Alarming', action: 'disarm', icon:"st.security.alarm.alarm", backgroundColor:"#ff0000"
-        	state "away", label:'Armed Away', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#6666FF"
-        	state "disarm", label:'Disarm', icon:"st.security.alarm.off", backgroundColor:"#79b821"
-        	state "duress", label:'Duress', action: 'disarm', icon:"st.security.alarm.alarm", backgroundColor:"#ff0000"
-        	state "entrydelay", label:'Entry Delay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#ff9900"
-        	state "exitdelay", label:'Exit Delay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#ff9900"
-        	state "notready", label:'Not Ready', icon:"st.security.alarm.off", backgroundColor:"#ffcc00"
-        	state "ready", label:'Ready', action: 'away', icon:"st.security.alarm.off", backgroundColor:"#79b821"
-        	state "forceready", label:'Ready', action: 'away', icon:"st.security.alarm.off", backgroundColor:"#79b821"
-        	state "stay", label:'Armed Stay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#00A0DC"
-        	state "instantaway", label:'Armed Away', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#6666FF"
-        	state "instantstay", label:'Armed Stay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#00A0DC"
+			state "away", label:'Armed Away', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#6666FF"
+			state "disarm", label:'Disarm', icon:"st.security.alarm.off", backgroundColor:"#79b821"
+			state "duress", label:'Duress', action: 'disarm', icon:"st.security.alarm.alarm", backgroundColor:"#ff0000"
+			state "entrydelay", label:'Entry Delay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#ff9900"
+			state "exitdelay", label:'Exit Delay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#ff9900"
+			state "notready", label:'Not Ready', icon:"st.security.alarm.off", backgroundColor:"#ffcc00"
+			state "ready", label:'Ready', action: 'away', icon:"st.security.alarm.off", backgroundColor:"#79b821"
+			state "forceready", label:'Ready', action: 'away', icon:"st.security.alarm.off", backgroundColor:"#79b821"
+			state "stay", label:'Armed Stay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#00A0DC"
+			state "instantaway", label:'Armed Away', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#6666FF"
+			state "instantstay", label:'Armed Stay', action: 'disarm', icon:"st.security.alarm.on", backgroundColor:"#00A0DC"
 		}
 		standardTile("away", "capability.momentary", width: 2, height: 2, title: "Away", decoration: "flat"){
 			state "away", label: 'Away', action: "away", icon: "st.presence.car.car", backgroundColor: "#6666FF"
@@ -90,56 +90,56 @@ metadata {
 			state "default", action:"refresh.refresh", icon:"st.secondary.refresh"
 		}
 		//standardTile("instant", "capability.momentary", width: 2, height: 2, title: "Instant"){
-		//  state "instant", label: 'Instant', action: "instant", icon: "st.locks.lock.locked", backgroundColor: "#00FF00"
+			//state "instant", label: 'Instant', action: "instant", icon: "st.locks.lock.locked", backgroundColor: "#00FF00"
 		//}
 		//standardTile("night", "capability.momentary", width: 2, height: 2, title: "Night"){
-		//  state "night", label: 'Night', action: "night", icon: "st.Bedroom.bedroom2", backgroundColor: "#AA00FF"
+			//state "night", label: 'Night', action: "night", icon: "st.Bedroom.bedroom2", backgroundColor: "#AA00FF"
 		//}
 		//standardTile("reset", "capability.momentary", width: 2, height: 2, title: "Sensor Reset"){
-		//  state "reset", label: 'Sensor\u00A0Reset', action: "reset", icon: "st.alarm.smoke.smoke", backgroundColor: "#FF3000"
+			//state "reset", label: 'Sensor\u00A0Reset', action: "reset", icon: "st.alarm.smoke.smoke", backgroundColor: "#FF3000"
 		//}
 		//standardTile("bypassoff", "capability.momentary", width: 2, height: 2, title: "Bypass Off"){
-		//  state "bypassoff", label: 'Bypass\u00A0Off', action: "bypassoff", icon: "st.locks.lock.unlocked", backgroundColor: "#FFFF00"
+			//state "bypassoff", label: 'Bypass\u00A0Off', action: "bypassoff", icon: "st.locks.lock.unlocked", backgroundColor: "#FFFF00"
 		//}
 		//valueTile("ledready", "device.ledready", width: 2, height: 1){
-		//  state "ledready", label:'Ready: ${currentValue}'
+			//state "ledready", label:'Ready: ${currentValue}'
 		//}
 		//valueTile("ledarmed", "device.ledarmed", width: 2, height: 1){
-		//  state "ledarmed", label:'Armed: ${currentValue}'
+			//state "ledarmed", label:'Armed: ${currentValue}'
 		//}
 		//valueTile("ledmemory", "device.ledmemory", width: 2, height: 1){
-		//  state "ledmemory", label:'Memory: ${currentValue}'
+			//state "ledmemory", label:'Memory: ${currentValue}'
 		//}
 		//valueTile("ledbypass", "device.ledbypass", width: 2, height: 1){
-		//  state "ledbypass", label:'Bypass: ${currentValue}'
+			//state "ledbypass", label:'Bypass: ${currentValue}'
 		//}
 		//valueTile("ledtrouble", "device.ledtrouble", width: 2, height: 1){
-		//  state "ledtrouble", label:'Trouble: ${currentValue}'
+			//state "ledtrouble", label:'Trouble: ${currentValue}'
 		//}
 		//valueTile("ledprogram", "device.ledprogram", width: 2, height: 1){
-		//  state "ledprogram", label:'Program: ${currentValue}'
+			//state "ledprogram", label:'Program: ${currentValue}'
 		//}
 		//valueTile("ledfire", "device.ledfire", width: 2, height: 1){
-		//  state "ledfire", label:'Fire: ${currentValue}'
+			//state "ledfire", label:'Fire: ${currentValue}'
 		//}
 		//valueTile("ledbacklight", "device.ledbacklight", width: 2, height: 1){
-		//  state "ledbacklight", label:'Backlight: ${currentValue}'
+			//state "ledbacklight", label:'Backlight: ${currentValue}'
 		//}
 		//standardTile("key", "device.key", width: 2, height: 2, title: "Key"){
-		//  state "nokey", label: 'Alarm\u00A0Keys\u00A0Off', action: "key", icon: "st.illuminance.illuminance.dark", backgroundColor: "#7B3516", defaultState: true
-		//  state "key", label: 'Alarm\u00A0Keys\u00A0On', action: "nokey", icon: "st.illuminance.illuminance.light", backgroundColor: "#FF6E2E"
+			//state "nokey", label: 'Alarm\u00A0Keys\u00A0Off', action: "key", icon: "st.illuminance.illuminance.dark", backgroundColor: "#7B3516", defaultState: true
+			//state "key", label: 'Alarm\u00A0Keys\u00A0On', action: "nokey", icon: "st.illuminance.illuminance.light", backgroundColor: "#FF6E2E"
 		//}
 		//standardTile("keyfire", "device.keyfire", width: 2, height: 2, title: "Fire Key"){
-		//  state "restore", label: 'Fire\u00A0Key', action: "keyfire", icon: "st.Home.home29", backgroundColor: "#FF2400"
-		//  state "alarm", label: 'Fire\u00A0Key\u00A0Alarm', action: "keyfire", icon: "st.Home.home29", backgroundColor: "#FF2400"
+			//state "restore", label: 'Fire\u00A0Key', action: "keyfire", icon: "st.Home.home29", backgroundColor: "#FF2400"
+			//state "alarm", label: 'Fire\u00A0Key\u00A0Alarm', action: "keyfire", icon: "st.Home.home29", backgroundColor: "#FF2400"
 		//}
 		//standardTile("keyaux", "device.keyaux", width: 2, height: 2, title: "Aux Key"){
-		//  state "restore", label: 'Aux\u00A0Key', action: "keyaux", icon: "st.Transportation.transportation7", backgroundColor: "#DD0000"
-		//  state "alarm", label: 'Aux\u00A0Key\u00A0Alarm', action: "keyaux", icon: "st.Transportation.transportation7", backgroundColor: "#DD0000"
+			//state "restore", label: 'Aux\u00A0Key', action: "keyaux", icon: "st.Transportation.transportation7", backgroundColor: "#DD0000"
+			//state "alarm", label: 'Aux\u00A0Key\u00A0Alarm', action: "keyaux", icon: "st.Transportation.transportation7", backgroundColor: "#DD0000"
 		//}
 		//standardTile("keypanic", "device.keypanic", width: 2, height: 2, title: "Panic Key"){
-		//  state "restore", label: 'Panic\u00A0Key', action: "keypanic", icon: "st.Transportation.transportation9", backgroundColor: "#000fd5"
-		//  state "alarm", label: 'Panic\u00A0Key\u00A0Alarm', action: "keypanic", icon: "st.Transportation.transportation9", backgroundColor: "#000fd5"
+			//state "restore", label: 'Panic\u00A0Key', action: "keypanic", icon: "st.Transportation.transportation9", backgroundColor: "#000fd5"
+			//state "alarm", label: 'Panic\u00A0Key\u00A0Alarm', action: "keypanic", icon: "st.Transportation.transportation9", backgroundColor: "#000fd5"
 		//}
 
 		main "statusHidden"
