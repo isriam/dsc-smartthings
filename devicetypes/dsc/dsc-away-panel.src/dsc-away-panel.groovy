@@ -3,8 +3,8 @@
  *
  *  Author: Jordan <jordan@xeron.cc
  *  Original Code By: Rob Fisher <robfish@att.net>, Carlos Santiago <carloss66@gmail.com>, JTT <aesystems@gmail.com>
- *  Cosmetically Tweaked By: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
  *  Date: 2016-02-03
+ *  Cosmetically Tweaked By: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
  */
  // for the UI
 
