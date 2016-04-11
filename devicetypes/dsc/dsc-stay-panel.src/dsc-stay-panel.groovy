@@ -144,7 +144,7 @@ metadata {
 
 		main "statusHidden"
 		details(["status", "away", "stay", "disarm", "trouble", "chime", "refresh"])
-    }
+	}
 }
 
 def partition(String state, String partition, Map parameters) {
