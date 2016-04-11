@@ -1,18 +1,18 @@
 /*
- *  DSC Zone Motion Device
+ *  DSC Smoke Device (wireless & 4-wire zone-attached types only)
  *
  *  Author: Jordan <jordan@xeron.cc>
- *  Original Author: Matt Martz <matt.martz@gmail.com>
- *  Modified to be a motion device: Kent Holloway <drizit@gmail.com>
+ *  Originally by: Matt Martz <matt.martz@gmail.com>
+ *  Modified by: Kent Holloway <drizit@gmail.com>
  *  Date: 2016-02-27
  *  Cosmetically Tweaked By: Mike Maat <mmaat@ualberta.ca> on 2016-04-08
  */
 
 // for the UI
 metadata {
-  definition (name: "DSC Zone Motion", author: "jordan@xeron.cc", namespace: 'DSC') {
+  definition (name: "DSC Zone Smoke 4w", author: "jordan@xeron.cc", namespace: 'DSC') {
     // Change or define capabilities here as needed
-    capability "Motion Sensor"
+    capability "Smoke Detector"
     capability "Sensor"
     capability "Momentary"
 
@@ -27,10 +27,10 @@ metadata {
 
   tiles(scale: 2) {
   	multiAttributeTile(name:"zone", type: "generic", width: 6, height: 4){
-        tileAttribute ("device.motion", key: "PRIMARY_CONTROL") {
-            attributeState "active", label:'Motion', icon:"st.motion.motion.active", backgroundColor:"#53a7c0"
-            attributeState "inactive", label:'No Motion', icon:"st.motion.motion.inactive", backgroundColor:"#ffffff"
-            attributeState "alarm", label:'Alarm', icon:"st.motion.motion.active", backgroundColor:"#ff0000"
+        tileAttribute ("device.smoke", key: "PRIMARY_CONTROL") {
+            attributeState "clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#ffffff"
+            attributeState "detected", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13"
+            attributeState "tested", label:'Tested', icon:"st.alarm.smoke.test", backgroundColor:"#e86d13"
         }
     }
     standardTile ("trouble", "device.trouble", width: 2, height: 2, title: "Trouble") {
@@ -38,10 +38,9 @@ metadata {
       state "tamper", label: 'Tamper', icon: "st.security.alarm.alarm", backgroundColor: "#ffa81e"
       state "fault", label: 'Fault', icon: "st.security.alarm.alarm", backgroundColor: "#ff1e1e"
     }
-    standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass", decoration: "flat"){
-      state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked"
+    standardTile("bypass", "capability.momentary", width: 2, height: 2, title: "Bypass"){
+      state "bypass", label: 'Bypass', action: "bypass", icon: "st.locks.lock.unlocked", backgroundColor: "#FFFF00"
     }
-
 	standardTile("spacerTile", "spacerTile", decoration: "flat", width: 1, height: 2) {
 	}
     
@@ -49,7 +48,7 @@ metadata {
     main "zone"
 
     // These tiles will be displayed when clicked on the device, in the order listed here.
-    details(["zone", "spacerTile", "trouble", "bypass", "spacerTile"])
+    details(["zone", "spacerTile","trouble", "bypass", "spacerTile"])
   }
 }
 
@@ -74,15 +73,15 @@ def zone(String state) {
     // Send final event
     sendEvent (name: "trouble", value: "${state}")
   } else {
-    // Since this is a motion sensor device we need to convert open to active and closed to inactive
+    // Since this is a smoke device we need to convert the values to match the device capabilities
     // before sending the event
     def eventMap = [
-     'open':"active",
-     'closed':"inactive",
-     'alarm':"alarm"
+     'open':"tested",
+     'closed':"clear",
+     'alarm':"detected"
     ]
     def newState = eventMap."${state}"
     // Send final event
-    sendEvent (name: "motion", value: "${newState}")
+    sendEvent (name: "smoke", value: "${newState}")
   }
 }
