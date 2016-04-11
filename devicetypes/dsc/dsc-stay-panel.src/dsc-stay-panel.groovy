@@ -148,114 +148,119 @@ metadata {
 }
 
 def partition(String state, String partition, Map parameters) {
-  // state will be a valid state for the panel (ready, notready, armed, etc)
-  // partition will be a partition number, for most users this will always be 1
+	// state will be a valid state for the panel (ready, notready, armed, etc)
+	// partition will be a partition number, for most users this will always be 1
 
-  log.debug "Partition: ${state} for partition: ${partition}"
+	log.debug "Partition: ${state} for partition: ${partition}"
 
-  def onList = ['alarm','entrydelay','exitdelay','instantstay','stay']
+	def onList = ['alarm','entrydelay','exitdelay','instantstay','stay']
 
-  def chimeList = ['chime','nochime']
+	def chimeList = ['chime','nochime']
 
-  def troubleMap = [
-    'trouble':"detected",
-    'restore':"clear",
-  ]
+	def troubleMap = [
+		'trouble':"detected",
+		'restore':"clear",
+  	]
 
-  if (onList.contains(state)) {
-    sendEvent (name: "switch", value: "on")
-  } else if (!(chimeList.contains(state) || troubleMap[state] || state.startsWith('led') || state.startsWith('key'))) {
-    sendEvent (name: "switch", value: "off")
-  }
+	if (onList.contains(state)) {
+		sendEvent (name: "switch", value: "on")
+	} 
+	else if (!(chimeList.contains(state) || troubleMap[state] || state.startsWith('led') || state.startsWith('key'))) {
+		sendEvent (name: "switch", value: "off")
+	}
 
-  if (troubleMap[state]) {
-    def troubleState = troubleMap."${state}"
-    // Send trouble event
-    sendEvent (name: "trouble", value: "${troubleState}")
-  } else if (chimeList.contains(state)) {
-    // Send chime event
-    sendEvent (name: "chime", value: "${state}")
-  } else if (state.startsWith('led')) {
-    def flash = (state.startsWith('ledflash')) ? 'flash ' : ''
-    for (p in parameters) {
-      sendEvent (name: "led${p.key}", value: "${flash}${p.value}")
-    }
-  } else if (state.startsWith('key')) {
-    def name = state.minus('alarm').minus('restore')
-    def value = state.replaceAll(/.*(alarm|restore)/, '$1')
-    sendEvent (name: "${name}", value: "${value}")
-  } else {
-    // Send final event
-    sendEvent (name: "status", value: "${state}")
-  }
+	if (troubleMap[state]) {
+		def troubleState = troubleMap."${state}"
+		// Send trouble event
+		sendEvent (name: "trouble", value: "${troubleState}")
+	} 
+	else if (chimeList.contains(state)) {
+		// Send chime event
+		sendEvent (name: "chime", value: "${state}")
+	} 
+	else if (state.startsWith('led')) {
+		def flash = (state.startsWith('ledflash')) ? 'flash ' : ''
+		for (p in parameters) {
+			sendEvent (name: "led${p.key}", value: "${flash}${p.value}")
+		}
+	} 
+	else if (state.startsWith('key')) {
+		def name = state.minus('alarm').minus('restore')
+		def value = state.replaceAll(/.*(alarm|restore)/, '$1')
+		sendEvent (name: "${name}", value: "${value}")
+	} 
+	else {
+		// Send final event
+		sendEvent (name: "status", value: "${state}")
+	}
 }
 
 def away() {
-  parent.sendUrl('arm')
+	parent.sendUrl('arm')
 }
 
 def bypassoff() {
-  parent.sendUrl("bypass?zone=0")
+	parent.sendUrl("bypass?zone=0")
 }
 
 def disarm() {
-  parent.sendUrl('disarm')
+	parent.sendUrl('disarm')
 }
 
 def instant() {
-  parent.sendUrl('toggleinstant')
+	parent.sendUrl('toggleinstant')
 }
 
 def night() {
-  parent.sendUrl('togglenight')
+	parent.sendUrl('togglenight')
 }
 
 def nokey() {
-  sendEvent (name: "key", value: "nokey")
+	sendEvent (name: "key", value: "nokey")
 }
 
 def on() {
-  stay()
+	stay()
 }
 
 def off() {
-  disarm()
+	disarm()
 }
 
 def key() {
-  sendEvent (name: "key", value: "key")
+	sendEvent (name: "key", value: "key")
 }
 
 def keyfire() {
-  if ("${device.currentValue("key")}" == 'key') {
-    parent.sendUrl('panic?type=1')
-  }
+	if ("${device.currentValue("key")}" == 'key') {
+		parent.sendUrl('panic?type=1')
+	}
 }
 
 def keyaux() {
-  if ("${device.currentValue("key")}" == 'key') {
-    parent.sendUrl('panic?type=2')
-  }
+	if ("${device.currentValue("key")}" == 'key') {
+		parent.sendUrl('panic?type=2')
+	}
 }
 
 def keypanic() {
-  if ("${device.currentValue("key")}" == 'key') {
-    parent.sendUrl('panic?type=3')
-  }
+	if ("${device.currentValue("key")}" == 'key') {
+		parent.sendUrl('panic?type=3')
+	}
 }
 
 def refresh() {
-  parent.sendUrl('refresh')
+	parent.sendUrl('refresh')
 }
 
 def reset() {
-  parent.sendUrl('reset')
+	parent.sendUrl('reset')
 }
 
 def stay() {
-  parent.sendUrl('stayarm')
+	parent.sendUrl('stayarm')
 }
 
 def togglechime() {
-  parent.sendUrl('togglechime')
+	parent.sendUrl('togglechime')
 }
